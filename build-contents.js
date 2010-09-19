@@ -16,7 +16,8 @@ function addHeading(h, node, level) {
 }
 
 function makeList(tree, opts) {
-	var list = createDOM('ol');
+	var type = opts.ordered ? 'ol' : 'ul';
+	var list = createDOM(type);
 	for(var i=0; i < tree.length; i++) {
 		var node = tree[i];
 		var li = createDOM('li');
