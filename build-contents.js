@@ -72,10 +72,13 @@ function buildContents(opts_in) {
 		}
 	});
 
-	var box = createDOM('div', { id: id });
-
 	var list = makeList(headings, opts);
-	box.appendChild(list);
 
-	document.body.appendChild(box)
+	if(document.getElementById(id) == null) {
+		var box = createDOM('div', { id: id });
+		box.appendChild(list);
+		document.body.appendChild(box)
+	} else {
+		document.getElementById(id).appendChild(list);
+	}
 }
