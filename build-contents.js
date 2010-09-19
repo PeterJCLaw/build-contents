@@ -20,6 +20,11 @@ function makeList(tree, opts) {
 	for(var i=0; i < tree.length; i++) {
 		var node = tree[i];
 		var li = createDOM('li');
+
+		if(opts.forceLinks && node.node.id == '') {
+			node.node.id = 'JS-h'+node.level+'-'+node.node.innerHTML.replace(/ /g, '-');
+		}
+
 		if(opts.links && node.node.id) {
 			var a = createDOM('a', { href: '#'+node.node.id });
 			a.innerHTML = node.node.innerHTML;
@@ -52,6 +57,7 @@ function buildContents(opts_in) {
 	var opts = opts_in || {};
 	var id = opts.id || 'contents-box';
 	opts.links = opts.links || true;
+	opts.forceLinks = opts.forceLinks || true;
 
 	walk(document, function(node) {
 		if(node.tagName != null
