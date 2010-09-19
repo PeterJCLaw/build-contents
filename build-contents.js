@@ -39,8 +39,9 @@ function createDOM(tag, properties) {
 headings = [];
 //headings = [{h,c:[]},{},{}]
 
-function buildContents(id) {
-	var id = id | 'contents-box';
+function buildContents(opts_in) {
+	var opts = opts_in || {};
+	var id = opts.id || 'contents-box';
 	walk(document, function(node) {
 		if(node.tagName != null
 		&& node.tagName.length == 2
