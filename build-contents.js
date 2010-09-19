@@ -15,12 +15,19 @@ function addHeading(h, node, level) {
 	}
 }
 
-function makeList(tree) {
+function makeList(tree, opts) {
 	var ol = createDOM('ol');
 	for(var i=0; i < tree.length; i++) {
 		var node = tree[i];
 		var li = createDOM('li');
-		li.innerHTML = node.node.innerHTML;
+		if(opts.links && node.node.id) {
+			var a = createDOM('a', { href: '#'+node.node.id });
+			a.innerHTML = node.node.innerHTML;
+			li.appendChild(a);
+		} else {
+			li.innerHTML = node.node.innerHTML;
+		}
+
 		if(node.children.length > 0) {
 			var sub_ol = makeList(node.children, opts);
 			li.appendChild(sub_ol);
@@ -44,6 +51,8 @@ headings = [];
 function buildContents(opts_in) {
 	var opts = opts_in || {};
 	var id = opts.id || 'contents-box';
+	opts.links = opts.links || true;
+
 	walk(document, function(node) {
 		if(node.tagName != null
 		&& node.tagName.length == 2
@@ -59,7 +68,7 @@ function buildContents(opts_in) {
 
 	var box = createDOM('div', { id: id });
 
-	var list = makeList(headings);
+	var list = makeList(headings, opts);
 	box.appendChild(list);
 
 	document.body.appendChild(box)
