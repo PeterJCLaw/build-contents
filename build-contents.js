@@ -48,8 +48,8 @@ function buildContents(opts_in) {
 		&& node.tagName.toLowerCase()[0] == 'h')
 		{
 			addHeading(headings, {
-				level:node.tagName[1],
-				 node:node,
+			    level:node.tagName[1],
+			     node:node,
 			 children:[]
 			}, node.tagName[1]);
 		}
