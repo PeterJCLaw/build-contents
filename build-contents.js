@@ -21,8 +21,10 @@ function makeList(tree) {
 		var node = tree[i];
 		var li = createDOM('li');
 		li.innerHTML = node.node.innerHTML;
-		var sub_ol = makeList(node.children);
-		li.appendChild(sub_ol);
+		if(node.children.length > 0) {
+			var sub_ol = makeList(node.children, opts);
+			li.appendChild(sub_ol);
+		}
 		ol.appendChild(li);
 	}
 	return ol;
