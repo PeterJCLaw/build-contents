@@ -16,7 +16,7 @@ function addHeading(h, node, level) {
 }
 
 function makeList(tree, opts) {
-	var ol = createDOM('ol');
+	var list = createDOM('ol');
 	for(var i=0; i < tree.length; i++) {
 		var node = tree[i];
 		var li = createDOM('li');
@@ -34,12 +34,12 @@ function makeList(tree, opts) {
 		}
 
 		if(node.children.length > 0) {
-			var sub_ol = makeList(node.children, opts);
-			li.appendChild(sub_ol);
+			var sub_list = makeList(node.children, opts);
+			li.appendChild(sub_list);
 		}
-		ol.appendChild(li);
+		list.appendChild(li);
 	}
-	return ol;
+	return list;
 }
 
 function createDOM(tag, properties) {
