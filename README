@@ -1,0 +1,6 @@
+This project aims to create a simple javascript file that can be included
+in any html page to create a contents box from the headings of the page.
+
+ - build-contents.js: This is the file to include on your web page
+ - dummy.html: a dummy html file that demostrates how it works
+
