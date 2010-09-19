@@ -4,3 +4,28 @@ in any html page to create a contents box from the headings of the page.
  - build-contents.js: This is the file to include on your web page
  - dummy.html: a dummy html file that demostrates how it works
 
+In order to use the functionality simply have the page call the
+`buildContents' function at some point after the page as loaded. The
+dummy file calls it in the body onload attribute. This function takes a
+single optional parameter, which is a dictionary of options.
+
+Options: (type, default)
+  id: (string, 'contents-box')
+	The id of the block to append the list to. If there is no such
+	block then it is created, and appended to the bottom of the
+	document body.
+
+  links: (boolean, true)
+	Whether or not each of the items in the contents list should link to
+	the heading that it references. This is done using the id of the
+	target heading. If no such id exists then no link is created.
+
+  forceLinks: (boolean, true)
+	Whether or not to create ids for headins that don't have them such
+	that they can be linked to. Such ids are created before any attempt
+	to link to the heading, and are formed using the text in the heading
+	and a prefix.
+
+  ordered: (boolean, false)
+	Whether or not the contents list should be an ordered list (<ol>),
+	as opposed to an unordered list (<ul>).
