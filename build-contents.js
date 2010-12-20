@@ -1,4 +1,12 @@
 
+/**
+ * Add a trim method to the string prototype.
+ * Removes preceding and trailing whitespace.
+ */
+String.prototype.trim = function () {
+	return this.replace(/^\s*/, '').replace(/\s*$/, '');
+}
+
 function walk(root, cb) {
 	cb(root);
 	for(var i=0; i < root.childNodes.length; i++) {
@@ -23,7 +31,9 @@ function makeList(tree, opts) {
 		var li = createDOM('li');
 
 		if(opts.forceLinks && node.node.id == '') {
-			node.node.id = 'JS-h'+node.level+'-'+node.node.innerHTML.replace(/ /g, '-');
+			var text = node.node.innerHTML;
+			var id = text.trim().replace(/\s+/g, '-');
+			node.node.id = 'JS-h'+node.level+'-'+id;
 		}
 
 		if(opts.links && node.node.id) {
