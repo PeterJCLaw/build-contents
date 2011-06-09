@@ -1,0 +1,17 @@
+
+#contents {
+	float: right;
+	border: 1px solid grey;
+	padding: 10px;
+	margin-right: 15px;
+}
+
+#contents ul {
+	margin: 0;
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+#contents ul ul {
+	margin: 2px 0 3px;
+}
