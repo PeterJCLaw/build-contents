@@ -73,7 +73,9 @@ function buildContents(opts_in) {
 	walk(document, function(node) {
 		if(node.tagName != null
 		&& node.tagName.length == 2
-		&& node.tagName.toLowerCase()[0] == 'h')
+		&& node.tagName.toLowerCase()[0] == 'h'
+		&& /[1-6]/.test(node.tagName[1])
+		  )
 		{
 			addHeading(headings, {
 			    level:node.tagName[1],
